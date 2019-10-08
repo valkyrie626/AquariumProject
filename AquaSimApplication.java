@@ -26,20 +26,24 @@ public class AquaSimApplication
         System.out.println("Look at some dumb fish XDDDDDDDDDDDDD");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
-
+           Random generator = new Random();
+           //int randNum;
+           //generator.nextInt(10);
+           // randNum= generator.nextInt(10);
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
-        aqua = new Aquarium(600, 480); // ... object that has now been created
-
+        aqua = new Aquarium(1000, 1000); // ... object that has now been created
+        // aqua = new Aquarium(600, 480);
         // Construct fish and add them to the aquarium.
         //      CODE MISSING HERE!
-         AquaFish Jeff = new AquaFish(aqua);
+         AquaFish Jeff = new AquaFish(aqua, Color.RED);
          aqua.add(Jeff);
          
          
-         AquaFish sashimi = new AquaFish(aqua);
-         aqua.add(sashimi);
-         AquaFish mack = new AquaFish(aqua);
+         
+         AquaFish sash = new AquaFish(aqua, Color.GREEN);
+         aqua.add(sash);
+         AquaFish mack = new AquaFish(aqua, Color.BLUE);
          aqua.add(mack);
 
         // Construct a graphical user interface (GUI) to display and control
@@ -63,14 +67,52 @@ public class AquaSimApplication
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
         
-        Jeff.moveForward();
-        userInterface.showAquarium();
+        
+         //for 
+        for(;;)
+        {
+            if (Jeff.atWall()== true)
+            {
+            Jeff.changeDir();
+            }
+            
+            else
+            {
+            Jeff.moveForward();
+            }
+        
+
+
+            if (sash.atWall()== true)
+            {
+            sash.changeDir();
+            }
+            
+            else
+            {
+            sash.moveForward();
+            }
+
+
+            if (mack.atWall()== true)
+            {
+            mack.changeDir();
+            }
+            
+            else
+            {
+            mack.moveForward();
+            }
+            userInterface.showAquarium();
+    }
+   
+
         
 
         // WRAP UP.
 
         // Remind user how to quit application.
-        userInterface.println ("Close GUI display window to quit.");
+        //userInterface.println ("Close GUI display window to quit.");
 
     }//end main
 
