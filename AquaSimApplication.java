@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.Random;
+import java.util.Scanner;
 
 /** Aquarium Lab Series: <br>    
  *      The AquaSimApplication class contains the main function that will
@@ -17,6 +18,7 @@ import java.util.Random;
  **/
 public class AquaSimApplication
 {
+    
     /**
      *  This is the main function.  It executes the program.
      *  @param    String args[] is never used
@@ -24,12 +26,16 @@ public class AquaSimApplication
         private static Random generator;
      
     public static void main(String args[])
+    
+    
     {
+        
         System.out.println("who lives in a pineapple under the sea.");
+            
 
+        
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
            generator = new Random();
-           
            //int randNum;
            //generator.nextInt(10);  java.awt.Color
            // randNum= generator.nextInt(10);
@@ -51,9 +57,12 @@ public class AquaSimApplication
          AquaFish Wang = new AquaFish(aqua, getColor());
          aqua.add(Wang);//
          
+         AquaFish Yanny = new AquaFish(aqua, getColor());
+         aqua.add(Yanny);
          
          AquaFish sash = new AquaFish(aqua, getColor());
          aqua.add(sash);
+         
          AquaFish mack = new AquaFish(aqua, getColor());
          aqua.add(mack);
 
@@ -61,7 +70,7 @@ public class AquaSimApplication
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
         AquaSimGUI userInterface;              // create reference to GUI ...
-        userInterface = new AquaSimGUI(aqua);  // ... and then GUI itself
+        userInterface = new AquaSimGUI(aqua, true);  // ... and then GUI itself
 
         // Tell the user how to start the aquarium simulation.
         System.out.println("Press the Start button to start the simulation.");
@@ -79,8 +88,11 @@ public class AquaSimApplication
         //      CODE MISSING HERE!
         
         
-         //for 
-        for(;;)
+         //for
+         int yetn= generator.nextInt(4);
+         System.out.println(yetn);
+         
+        for(int yabba=0;yabba<=userInterface.getNumberOfSteps();yabba++)
         {
             if (Jeff.atWall()== true)
             {
@@ -92,6 +104,15 @@ public class AquaSimApplication
             Jeff.moveForward();
             }
             
+            if (Yanny.atWall()== true)
+            {
+            Yanny.changeDir();
+            }
+            
+            else
+            {
+            Yanny.moveForward();
+            }
             
             if (Sniff.atWall()== true)
             {
@@ -147,7 +168,7 @@ public class AquaSimApplication
     }
    
 
-        
+
 
         // WRAP UP.
 
@@ -155,9 +176,11 @@ public class AquaSimApplication
         //userInterface.println ("Close GUI display window to quit.");
 
     }//end main
-        public static Color getColor()
+        
+    
+    public static Color getColor()
         {
-            int randNum = generator.nextInt(5);
+            int randNum = generator.nextInt(6);
             if (randNum==0)
                 return Color.RED;
             else if (randNum==1)
